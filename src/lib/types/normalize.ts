@@ -28,7 +28,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: ev.location || ev.place,
       status: mapStatus(ev.status_text || ev.stage || ''),
       description: ev.desc || ev.description || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
   
   if (provider === 'trackmypackage') {
@@ -38,7 +38,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location,
       status: mapStatus(e.status || ''),
       description: e.description || e.status || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
   
   if (provider === 'packagetrackr') {
@@ -48,7 +48,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location,
       status: mapStatus(e.activity || ''),
       description: e.activity || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
   
   if (provider === 'aftership') {
@@ -58,7 +58,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location,
       status: mapStatus(e.message || e.tag || ''),
       description: e.message || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
   
   if (provider === 'easypost') {
@@ -68,7 +68,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location ? `${e.location.city}, ${e.location.state}` : '',
       status: mapStatus(e.status || e.message || ''),
       description: e.message || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
   
   if (provider === 'shipengine') {
@@ -78,7 +78,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.city_locality ? `${e.city_locality}, ${e.state_province}` : '',
       status: mapStatus(e.description || ''),
       description: e.description || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
   
   if (provider === 'trackingmore') {
@@ -88,7 +88,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: '', // TrackingMore doesn't always provide location
       status: mapStatus(e.StatusDescription || ''),
       description: e.Details || e.StatusDescription || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   // Brazilian providers
@@ -99,7 +99,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.cidade ? `${e.cidade}/${e.uf}` : '',
       status: mapStatus(e.status || e.descricao || ''),
       description: e.descricao || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   if (provider === 'azul') {
@@ -109,7 +109,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location || '',
       status: mapStatus(e.event || ''),
       description: e.details || e.event || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   if (provider === 'tnt') {
@@ -119,7 +119,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location || '',
       status: mapStatus(e.status || ''),
       description: e.description || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   if (provider === 'loggi') {
@@ -129,7 +129,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.address || '',
       status: mapStatus(e.status || e.event || ''),
       description: e.event || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   // International providers
@@ -140,7 +140,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location || '',
       status: mapStatus(e.status || ''),
       description: e.status_details || e.status || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   if (provider === 'pkgtracker') {
@@ -150,7 +150,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location || '',
       status: mapStatus(e.event || ''),
       description: e.description || e.event || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   // American providers
@@ -161,7 +161,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.eventCity ? `${e.eventCity}, ${e.eventState}` : '',
       status: mapStatus(e.eventDescription || ''),
       description: e.eventDescription || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   if (provider === 'pitneybowes') {
@@ -171,7 +171,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.eventLocation ? `${e.eventLocation.city}, ${e.eventLocation.stateOrProvince}` : '',
       status: mapStatus(e.eventType || e.eventDescription || ''),
       description: e.eventDescription || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   if (provider === 'stamps') {
@@ -181,7 +181,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location || '',
       status: mapStatus(e.status || e.description || ''),
       description: e.description || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   // European providers
@@ -192,7 +192,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location || '',
       status: mapStatus(e.event || ''),
       description: e.details || e.event || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   if (provider === 'trackingex') {
@@ -202,7 +202,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location || '',
       status: mapStatus(e.status || ''),
       description: e.description || e.status || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   if (provider === 'whereismypackage') {
@@ -212,7 +212,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.location || '',
       status: mapStatus(e.status_code || e.message || ''),
       description: e.message || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   // Asian providers
@@ -223,7 +223,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: '', // Extract from context if needed
       status: mapStatus(e.status || e.context || ''),
       description: e.context || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
 
   if (provider === 'yunexpress') {
@@ -233,7 +233,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
       location: e.eventLocation || '',
       status: mapStatus(e.eventStatus || e.eventDescription || ''),
       description: e.eventDescription || '',
-    })).sort((a, b) => (a.time < b.time ? 1 : -1));
+    })).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
   
   return [];
@@ -314,3 +314,4 @@ function mapStatus(text: string): TrackingStatus {
   if (/(falha|devolvido|retido|exception|failed)/.test(t)) return 'exception';
   return 'unknown';
 }
+
