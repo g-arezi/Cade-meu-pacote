@@ -2,6 +2,11 @@
 
 Rastreamento unificado de encomendas com **20+ provedores** nacionais e internacionais. Preparado para deploy na Vercel.
 
+## Deploy Online
+
+O projeto está disponível publicamente em:
+[Clique Aqui!](https://cade-meu-pacote.vercel.app/)
+
 ## 🇧🇷 Provedores Nacionais (Brasil)
 - 📦 **Correios** - Empresa Brasileira de Correios e Telégrafos
 - 📬 **JadLog** - Transportadora brasileira
@@ -90,10 +95,7 @@ npm run dev
 - Environment Variables: defina `SEVENTEENTRACK_API_KEY` se usar 17track real
 - Deploy
 
-## Deploy Online
 
-O projeto está disponível publicamente em:
-[https://cade-meu-pacote.vercel.app/](CadeMeuPacote!?)
 
 ## Observações
 - O adapter dos Correios está com mock por não haver API pública livre de captcha. Considere usar serviços terceiros ou contratos oficiais.
