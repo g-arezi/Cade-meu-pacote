@@ -17,7 +17,7 @@ export function normalizeEventsOnly(raw: any, provider: string): TrackingEvent[]
         status: mapStatus(e.status || e.descricao || ''),
         description: e.descricao || e.status || '',
       };
-    }).sort((a, b) => (a.time < b.time ? 1 : -1));
+    }).sort((a: TrackingEvent, b: TrackingEvent) => (a.time < b.time ? 1 : -1));
   }
   
   if (provider === '17track') {
