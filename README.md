@@ -90,6 +90,11 @@ npm run dev
 - Environment Variables: defina `SEVENTEENTRACK_API_KEY` se usar 17track real
 - Deploy
 
+## Deploy Online
+
+O projeto está disponível publicamente em:
+[https://cade-meu-pacote.vercel.app/](CadeMeuPacote!?)
+
 ## Observações
 - O adapter dos Correios está com mock por não haver API pública livre de captcha. Considere usar serviços terceiros ou contratos oficiais.
 - O adapter 17track precisa de API key e endpoints de produção.
