@@ -5,6 +5,7 @@ import Timeline from '@/components/Timeline';
 import { LoadingSkeleton } from '@/components/LoadingSpinner';
 import { DeliveryEstimateCard } from '@/components/DeliveryEstimate';
 import { TrackingEvent } from '@/lib/types/tracking';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 interface UnifiedResponse {
   provider: string;
@@ -20,6 +21,7 @@ export default function HomePage() {
   const [results, setResults] = useState<UnifiedResponse[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [lastSearchCode, setLastSearchCode] = useState<string>('');
+  const [captchaVerified, setCaptchaVerified] = useState(false);
 
   function getProviderEmoji(provider: string): string {
     const emojis: Record<string, string> = {
@@ -56,7 +58,15 @@ export default function HomePage() {
     return names[provider] || provider.charAt(0).toUpperCase() + provider.slice(1);
   }
 
+  function handleCaptchaChange(value: string | null) {
+    setCaptchaVerified(!!value);
+  }
+
   async function handleSearch(code: string, provider?: string) {
+    if (!captchaVerified) {
+      setError('Por favor, complete o CAPTCHA antes de buscar.');
+      return;
+    }
     setLoading(true); setError(null); setResults(null);
     setLastSearchCode(code);
     
@@ -79,7 +89,12 @@ export default function HomePage() {
         <h1 className="text-3xl font-bold text-neutral-900 mb-2">Rastreamento de Pacotes</h1>
         <p className="text-neutral-600">Consulte simultaneamente em múltiplos provedores</p>
       </div>
-      
+
+      <ReCAPTCHA
+        sitekey="6LeiOgksAAAAAI4EHzl9qoj-D5BmrCS9qdW1hQ6r"
+        onChange={handleCaptchaChange}
+      />
+
       <SearchForm onSearch={handleSearch} loading={loading} />
       
       {error && (
