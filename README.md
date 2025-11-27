@@ -62,6 +62,35 @@ TRACKINGMORE_API_KEY=your_trackingmore_key
 NEXT_PUBLIC_APP_NAME=Cadê Meu Pacote!?
 ```
 
+## Como obter as chaves (API Keys)
+
+Para cada provedor usado no projeto, o fluxo geral é o mesmo:
+- Crie uma conta no site oficial do provedor.
+- No painel (Dashboard) procure por "API", "Developer", "Integrations" ou similar.
+- Gere uma API Key / Token e copie para suas variáveis de ambiente (`.env` ou nas env vars da Vercel).
+- Se o provedor exigir contrato ou plano pago, siga as instruções do painel.
+
+Onde procurar (provedores presentes neste projeto):
+- AfterShip — painel no site oficial (procure por *API / Developer*).
+- EasyPost — Dashboard → *API Keys*.
+- ShipEngine — área de desenvolvedores → *API Keys*.
+- ShipStation — Settings → *API Settings*.
+- 17TRACK — seção de desenvolvedores / API (17track ou developer.17track).
+- TrackingMore — painel / API.
+- ParcelMonitor — painel / API.
+- Parcels App — área de desenvolvedores / API.
+- Pitney Bowes — site oficial → soluções / developer.
+- Stamps.com — API / developer no painel.
+- Loggi — portal de desenvolvedores (procure por developer.loggi.com).
+- JadLog — contatar área técnica/comercial para acesso à API.
+- Correios — geralmente não há API pública simples; ver nota abaixo.
+- Cainiao, YunExpress e outros provedores chineses — painel de parceiros / developer no site oficial.
+
+Nota sobre `Correios`:
+- Os Correios (Brasil) não oferecem uma API pública sem restrições; integrações costumam exigir contratos, uso de serviços terceirizados ou scraping. Para desenvolvimento, use os adapters mockados do projeto.
+
+Depois de obter as chaves, adicione-as ao arquivo de ambiente ou nas variáveis de ambiente do serviço de deploy conforme o exemplo na seção "Variáveis de ambiente" acima.
+
 ## Desenvolvimento
 Como `npx` não estava disponível, o scaffold foi criado manualmente. Para continuar:
 
